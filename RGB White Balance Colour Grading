@@ -1,0 +1,10 @@
+//RGB White Balance Colour Grading
+src=0;
+//@param2:red 'red' 0 -0.1 0.1
+//@param4:green 'green' 0 -0.1 0.1
+//@param6:blue 'blue' 0 -0.1 0.1
+//@param8:intensity 'intensity' 1 0 10
+input_info(src,w,h) ? ( project_w=w; project_h=h; ); // preserve input dimensions
+w>0 ? gfx_blit(src);
+gfx_mode=w>0 ? 1 : 0;
+gfx_gradrect(0,0,project_w,project_h, red, green, blue, intensity);
