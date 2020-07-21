@@ -1,0 +1,17 @@
+// Crop tool
+src=0;
+//@param1:x_coord 'x coord' 0
+//@param2:y_coord 'y coord' 0
+//@param3:width 'width' 1 
+//@param4:height 'height' 1 
+
+input_info(src,w,h) ? ( project_w=w; project_h=h; ); // preserve input dimensions
+gfx_dest = mybuf = gfx_img_resize(mybuf, project_w, project_h, 1);
+gfx_blit(src, 0, 
+  x_coord*project_w,  y_coord*project_h, 
+  (width-x_coord)*project_w, (height-y_coord)*project_h,
+  x_coord*project_w,  y_coord*project_h, 
+  (width-x_coord)*project_w, (height-y_coord)*project_h);
+
+gfx_dest = -1; // main framebuffer
+gfx_blit(mybuf);
